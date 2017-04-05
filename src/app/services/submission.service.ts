@@ -36,4 +36,9 @@ export class SubmissionService {
     submission.SubmissionAbstract = submissionAbstract;
     this._http.post(this._url, JSON.stringify(submission), this._options).subscribe();
   }
+
+  getSubmissionsStatus() {
+    return this._http.get(this._url + 'Status', this._options)
+      .map((response: Response) => response.json());
+  }
 }

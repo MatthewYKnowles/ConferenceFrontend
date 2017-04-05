@@ -4,6 +4,7 @@ import {AdminComponent} from './admin/admin.component';
 import {HomeComponent} from './home/home.component';
 import {SubmissionComponent} from './submission/submission.component';
 import {SubmissionsComponent} from './submissions/submissions.component';
+import {SubmissionsStatusComponent} from './admin/submissions-status/submissions-status.component';
 
 export const routing = RouterModule.forRoot([
   { path: '',
@@ -37,6 +38,10 @@ export const routing = RouterModule.forRoot([
       {
         path: 'submissions',
         component: SubmissionsComponent
+      },
+      {
+        path: 'submissions-status',
+        component: SubmissionsStatusComponent
       }
     ]
   }

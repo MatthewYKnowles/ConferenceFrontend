@@ -13,6 +13,7 @@ import { HomeComponent } from './home/home.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { SubmissionComponent } from './submission/submission.component';
 import { SubmissionsComponent } from './submissions/submissions.component';
+import { SubmissionsStatusComponent } from './admin/submissions-status/submissions-status.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { SubmissionsComponent } from './submissions/submissions.component';
     HomeComponent,
     NavigationComponent,
     SubmissionComponent,
-    SubmissionsComponent
+    SubmissionsComponent,
+    SubmissionsStatusComponent
   ],
   imports: [
     BrowserModule,
