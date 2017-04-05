@@ -1,1 +1,4 @@
 <h1>The conference is {{submissionsStatus}} for submissions</h1>
+
+<button *ngIf="submissionsStatusIsOpen()" (click)="closeSubmissions()">Close submissions</button>
+<button *ngIf="submissionsStatusIsClosed()" (click)="openSubmissions()">Open submissions</button>

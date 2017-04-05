@@ -41,4 +41,16 @@ export class SubmissionService {
     return this._http.get(this._url + 'Status', this._options)
       .map((response: Response) => response.json());
   }
+
+  closeSubmissions() {
+    const submissionStatus: any = {};
+    submissionStatus.Status = 'closed';
+    return this._http.post(this._url + 'Status', JSON.stringify(submissionStatus), this._options);
+  }
+
+  openSubmissions() {
+    const submissionStatus: any = {};
+    submissionStatus.Status = 'open';
+    return this._http.post(this._url + 'Status', JSON.stringify(submissionStatus), this._options);
+  }
 }

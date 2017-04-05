@@ -8,17 +8,38 @@ import {SubmissionService} from '../../services/submission.service';
   providers: [SubmissionService]
 })
 export class SubmissionsStatusComponent implements OnInit {
-  private submissionsStatus: boolean;
+  private submissionsStatus: string;
 
   constructor(private _submissionsService: SubmissionService) {
-    this._submissionsService.getSubmissionsStatus().subscribe((submissionsStatus) => {
-      console.log(submissionsStatus);
-      this.submissionsStatus = submissionsStatus.status;
-      console.log(this.submissionsStatus);
-    });
   }
 
   ngOnInit() {
+    this.getSubmissionStatus();
   }
 
+  getSubmissionStatus(): void {
+    this._submissionsService.getSubmissionsStatus().subscribe((submissionsStatus) => {
+      this.submissionsStatus = submissionsStatus.status;
+    });
+  }
+
+  submissionsStatusIsOpen(): boolean {
+    return this.submissionsStatus === 'open';
+  }
+
+  submissionsStatusIsClosed(): boolean {
+    return this.submissionsStatus === 'closed';
+  }
+
+  closeSubmissions() {
+    this._submissionsService.closeSubmissions().subscribe(() => {
+      this.getSubmissionStatus();
+    });
+  }
+
+  openSubmissions(): void {
+    this._submissionsService.openSubmissions().subscribe(() => {
+      this.getSubmissionStatus();
+    });
+  }
 }
