@@ -1,9 +1,10 @@
 <div class="submissions-page">
-  <h1 class="submissions-title">Submissions</h1>
+  <h1 class="text-center">Submissions</h1>
 
-  <div *ngFor="let submission of submissions" class="submission-summary">
+  <div *ngFor="let submission of submissions" class="submission-summary" [routerLink]="['../edit-submission', submission.id]">
     {{ submission.submissionTitle }}<br>
     by: {{submission.lastName}}, {{ submission.firstName }}<br>
-    {{submission.startTime}}
+    start time: {{submission.startTime}}<br>
+    end time: {{submission.endTime}}
   </div>
 </div>
