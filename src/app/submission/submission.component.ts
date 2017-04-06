@@ -32,6 +32,6 @@ export class SubmissionComponent {
   }
 
   private allRequiredFieldsFilledIn(): boolean {
-    return !this.firstName || !this.lastName || !this.submissionTitle || !this.submissionAbstract;
+    return !this.firstName || !this.lastName || !this.submissionTitle || !this.submissionAbstract || !this.email;
   }
 }

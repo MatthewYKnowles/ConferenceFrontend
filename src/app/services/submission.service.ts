@@ -34,6 +34,7 @@ export class SubmissionService {
     submission.Bio = bio;
     submission.SubmissionTitle = submissionTitle;
     submission.SubmissionAbstract = submissionAbstract;
+    submission.StartTime = new Date();
     this._http.post(this._url, JSON.stringify(submission), this._options).subscribe();
   }
 

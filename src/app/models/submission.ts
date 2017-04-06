@@ -6,4 +6,7 @@ export class Submission {
   Email: string;
   Bio: string;
   SubmissionTitle: string;
+  StartTime: Date;
+  EndTime: Date;
+  Room: string;
 }

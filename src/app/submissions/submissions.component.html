@@ -3,6 +3,7 @@
 
   <div *ngFor="let submission of submissions" class="submission-summary">
     {{ submission.submissionTitle }}<br>
-    by: {{submission.lastName}}, {{ submission.firstName }}
+    by: {{submission.lastName}}, {{ submission.firstName }}<br>
+    {{submission.startTime}}
   </div>
 </div>
