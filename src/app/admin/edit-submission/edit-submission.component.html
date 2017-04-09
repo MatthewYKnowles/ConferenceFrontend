@@ -1,4 +1,27 @@
-<p>
-  edit-submission works!
-</p>
-{{id}}
+<h1 class="text-center">{{submission.submissionTitle}}</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3">
+      <h2>Speaker:</h2>
+    </div>
+    <div class="col-sm-9">
+      <h2>{{submission.firstName}} {{submission.lastName}}</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">
+      <h3>Start Time: </h3>
+    </div>
+    <div class="col-sm-3">
+      <h3>{{startTime}}</h3>
+    </div>
+  </div>
+  <div class ="row">
+    <div class="col-sm-2">
+      <h3>Abstract: </h3><br>
+    </div>
+    <div class="col-sm-10 submission-abstract">
+      <h4>{{submission.submissionAbstract}}</h4>
+    </div>
+  </div>
+</div>
