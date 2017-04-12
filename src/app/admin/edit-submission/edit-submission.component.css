@@ -1,3 +1,11 @@
 .submission-abstract {
   margin-top: 30px;
 }
+
+.time-slot {
+  width: 50px;
+}
+
+.end-time {
+  margin-left: 100px;
+}

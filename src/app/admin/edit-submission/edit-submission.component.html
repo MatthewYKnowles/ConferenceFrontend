@@ -8,15 +8,28 @@
       <h2>{{submission.firstName}} {{submission.lastName}}</h2>
     </div>
   </div>
-  <div class="row">
-    <div class="col-sm-3">
-      <h3>Start Time: </h3>
-    </div>
-    <div class="col-sm-3">
-      <h3>{{startTime}}</h3>
-    </div>
+  <div>
+    <h3>Session Start Time
+      <select [(ngModel)]="startTimeInHours">
+        <option *ngFor="let hour of hourOptions" [value]="hour.value">{{hour.display}}</option>
+      </select>
+      :
+      <select [(ngModel)]="startTimeInMinutes">
+        <option *ngFor="let minute of minuteOptions" [value]="minute.value">{{minute.display}}</option>
+      </select>
+    </h3>
+    <h3 class="end-time">End Time
+      <select [(ngModel)]="endTimeInHours">
+        <option *ngFor="let hour of hourOptions" [value]="hour.value">{{hour.display}}</option>
+      </select>
+      :
+      <select [(ngModel)]="endTimeInMinutes">
+        <option *ngFor="let minute of minuteOptions" [value]="minute.value">{{minute.display}}</option>
+      </select>
+    </h3>
+    <h3>Room: {{room}}</h3>
   </div>
-  <div class ="row">
+  <div class="row">
     <div class="col-sm-2">
       <h3>Abstract: </h3><br>
     </div>
@@ -25,3 +38,4 @@
     </div>
   </div>
 </div>
+

@@ -6,7 +6,7 @@ import {Submission} from '../models/submission';
 
 @Injectable()
 export class SubmissionService {
-  public _url = 'http://localhost:51508/api/submissions';
+  public _url = 'http://localhost:59335/api/submissions';
   private _headers: any = new Headers({'Content-Type': 'application/json'});
   private _options: any;
 
@@ -34,7 +34,6 @@ export class SubmissionService {
     submission.Bio = bio;
     submission.SubmissionTitle = submissionTitle;
     submission.SubmissionAbstract = submissionAbstract;
-    submission.StartTime = new Date();
     this._http.post(this._url, JSON.stringify(submission), this._options).subscribe();
   }
 
