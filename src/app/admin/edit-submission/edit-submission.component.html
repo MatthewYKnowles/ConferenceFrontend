@@ -27,7 +27,11 @@
         <option *ngFor="let minute of minuteOptions" [value]="minute.value">{{minute.display}}</option>
       </select>
     </h3>
-    <h3>Room: {{room}}</h3>
+    <h3>Room:
+      <select [(ngModel)]="submission.Room">
+        <option *ngFor="let room of roomOptions" [value]="room.name">{{room.name}}</option>
+      </select>
+    </h3>
   </div>
   <div class="row">
     <div class="col-sm-2">

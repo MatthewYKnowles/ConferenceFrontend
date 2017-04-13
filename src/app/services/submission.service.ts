@@ -24,6 +24,10 @@ export class SubmissionService {
       .map((response: Response) => response.json());
   }
 
+  putSubmission(id: string, submission: Submission) {
+    return this._http.put(this._url + '/' + id, JSON.stringify(submission), this._options);
+  }
+
   postSubmission(firstName: string, lastName: string, company: string, email: string, bio: string, submissionTitle: string,
                  submissionAbstract: string): void {
     const submission: Submission = new Submission();

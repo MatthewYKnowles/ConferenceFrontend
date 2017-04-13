@@ -37,6 +37,11 @@ export class EditSubmissionComponent implements OnInit, OnDestroy {
     { value: 18, display: '18' },
     { value: 19, display: '19' },
   ];
+  roomOptions: any = [
+    { name: 'Green' },
+    { name: 'Red' },
+    { name: 'Purple' }
+  ];
   private id: string;
   private sub: Subscription;
   private submission: Submission = new Submission();
