@@ -2,9 +2,13 @@
   <h1 class="text-center">Submissions</h1>
 
   <div *ngFor="let submission of submissions" class="submission-summary" [routerLink]="['../edit-submission', submission.Id]">
-    {{ submission.SubmissionTitle }}<br>
-    by: {{submission.LastName}}, {{ submission.FirstName }}<br>
-    start time: {{submission.StartTimeInHours}}<br>
-    end time: {{submission.EndTimeInHours}}
+    <p *ngIf="!submission.Room" class="not-scheduled">Needs to be scheduled</p>
+    <p>{{ submission.SubmissionTitle }}</p>
+    <p>by: {{submission.LastName}}, {{ submission.FirstName }}</p>
+    <div *ngIf="submission.Room">
+      <p>start time: {{submission.StartTimeInHours}} : {{submission.StartTimeInMinutes}}</p>
+      <p>end time: {{submission.EndTimeInHours}} : {{submission.EndTimeInMinutes}}</p>
+      <p>room: {{submission.Room}}</p>
+    </div>
   </div>
 </div>

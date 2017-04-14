@@ -1,6 +1,7 @@
 import {SubmissionService} from '../services/submission.service';
 import {Router} from '@angular/router';
 import {Component} from '@angular/core';
+import {Submission} from "../models/submission";
 
 @Component({
   selector: 'app-conference-submission',
@@ -9,29 +10,24 @@ import {Component} from '@angular/core';
 })
 
 export class SubmissionComponent {
-  firstName: string;
-  lastName: string;
-  company: string;
-  email: string;
-  bio: string;
-  submissionTitle: string;
-  submissionAbstract: string;
+  submission: Submission;
   requiredFieldsEmpty = false;
 
   constructor(private _submissionService: SubmissionService, private _router: Router) {
+    this.submission = new Submission();
   }
 
   SubmitSubmission(): void {
-    if (this.allRequiredFieldsFilledIn()) {
+    if (this.allRequiredFieldsAreNotFilledIn()) {
       this.requiredFieldsEmpty = true;
     } else {
-      this._submissionService.postSubmission(this.firstName, this.lastName, this.company, this.email, this.bio,
-        this.submissionTitle, this.submissionAbstract);
+      this._submissionService.postSubmission(this.submission).subscribe();
       this._router.navigate(['']);
     }
   }
 
-  private allRequiredFieldsFilledIn(): boolean {
-    return !this.firstName || !this.lastName || !this.submissionTitle || !this.submissionAbstract || !this.email;
+  private allRequiredFieldsAreNotFilledIn(): boolean {
+    return !this.submission.FirstName || !this.submission.LastName || !this.submission.SubmissionTitle
+      || !this.submission.SubmissionAbstract || !this.submission.Email;
   }
 }

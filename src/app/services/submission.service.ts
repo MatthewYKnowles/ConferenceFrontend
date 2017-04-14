@@ -20,27 +20,16 @@ export class SubmissionService {
   }
 
   getSubmission(id: string): Observable<any> {
-    console.log(id);
     return this._http.get(this._url + '/'  + id, this._options)
       .map((response: Response) => response.json());
   }
 
   putSubmission(submission: Submission): Observable<any> {
-    console.log(submission);
     return this._http.put(this._url + '/' + submission.Id, JSON.stringify(submission), this._options);
   }
 
-  postSubmission(firstName: string, lastName: string, company: string, email: string, bio: string, submissionTitle: string,
-                 submissionAbstract: string): void {
-    const submission: Submission = new Submission();
-    submission.FirstName = firstName;
-    submission.LastName = lastName;
-    submission.Company = company;
-    submission.Email = email;
-    submission.Bio = bio;
-    submission.SubmissionTitle = submissionTitle;
-    submission.SubmissionAbstract = submissionAbstract;
-    this._http.post(this._url, JSON.stringify(submission), this._options).subscribe();
+  postSubmission(submission: Submission): Observable<any> {
+    return this._http.post(this._url, JSON.stringify(submission), this._options);
   }
 
   getSubmissionsStatus() {

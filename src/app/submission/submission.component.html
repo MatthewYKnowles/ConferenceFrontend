@@ -4,7 +4,7 @@
          [ngClass]="{'has-error': fName.invalid && fName.touched, 'has-success': fName.valid && fName.touched}">
       <label class="col-2 col-form-label">First Name</label>
       <div class="col-10">
-        <input #fName="ngModel" name="firstName" type="text" class="form-control" [(ngModel)]="firstName" required>
+        <input #fName="ngModel" name="firstName" type="text" class="form-control" [(ngModel)]="submission.FirstName" required>
         <span class="help-block" *ngIf="fName.invalid && fName.touched">First name required</span>
       </div>
     </div>
@@ -12,26 +12,26 @@
          [ngClass]="{'has-error': lName.invalid && lName.touched, 'has-success': lName.valid && lName.touched}">
       <label class="col-2 col-form-label">Last Name</label>
       <div class="col-10">
-        <input #lName="ngModel" name="lastName" type="text" class="form-control" [(ngModel)]="lastName" required>
+        <input #lName="ngModel" name="lastName" type="text" class="form-control" [(ngModel)]="submission.LastName" required>
         <span class="help-block" *ngIf="lName.invalid && lName.touched">Last name required</span>
       </div>
     </div>
     <div class="form-group row">
       <label class="col-2 col-form-label">Company</label>
       <div class="col-10">
-        <input type="text" name="company" class="form-control" [(ngModel)]="company">
+        <input type="text" name="company" class="form-control" [(ngModel)]="submission.Company">
       </div>
     </div>
     <div class="form-group row">
       <label class="col-2 col-form-label">Email Address</label>
       <div class="col-10">
-        <input type="email" name="email" class="form-control" [(ngModel)]="email">
+        <input type="email" name="email" class="form-control" [(ngModel)]="submission.Email">
       </div>
     </div>
     <div class="form-group row">
       <label class="col-2 col-form-label">Personal Bio</label>
       <div class="col-10">
-        <textarea type="text" name="bio" class="form-control" [(ngModel)]="bio"></textarea>
+        <textarea type="text" name="bio" class="form-control" [(ngModel)]="submission.Bio"></textarea>
       </div>
     </div>
     <div class="form-group row"
@@ -39,7 +39,7 @@
       <label class="col-xs-2 col-form-label">Submission Title</label>
       <div class="col-xs-10">
         <input #subTitle="ngModel" name="submissionTitle" type="text" class="form-control"
-               [(ngModel)]="submissionTitle"
+               [(ngModel)]="submission.SubmissionTitle"
                required>
         <span class="help-block" *ngIf="subTitle.invalid && subTitle.touched">Submission title required</span>
       </div>
@@ -49,7 +49,7 @@
       <label class="col-m-2 col-form-label">Submission Abstract</label>
       <div class="col-m-10">
         <textarea #subAbstract="ngModel" name="submissionAbstract" rows="5" class="form-control"
-                  [(ngModel)]="submissionAbstract" required></textarea>
+                  [(ngModel)]="submission.SubmissionAbstract" required></textarea>
         <span class="help-block"
               *ngIf="subAbstract.invalid && subAbstract.touched">Submission abstract required</span>
       </div>
