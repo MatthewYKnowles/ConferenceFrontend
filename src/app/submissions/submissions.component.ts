@@ -19,4 +19,12 @@ export class SubmissionsComponent implements OnInit {
   ngOnInit() {
   }
 
+  displayAsMinutes(minutes) {
+    let minutesAsAString = '';
+    if (minutes <= 9) {
+      minutesAsAString += '0';
+    }
+    minutesAsAString += minutes.toString();
+    return minutesAsAString;
+  }
 }

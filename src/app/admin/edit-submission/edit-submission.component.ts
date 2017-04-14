@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Subscription} from 'rxjs';
 import {SubmissionService} from '../../services/submission.service';
 import {Submission} from '../../models/submission';
@@ -11,12 +11,7 @@ import {Submission} from '../../models/submission';
   providers: [SubmissionService]
 })
 export class EditSubmissionComponent implements OnInit, OnDestroy {
-  room: string;
-  endTimeInMinutes: number;
-  endTimeInHours: number;
-  endTime: Date;
-  startTime: Date;
-  startTimeInHours: number;
+  showErrorMessage: boolean;
   minuteOptions: any = [
     { value: 0, display: '00' },
     { value: 15, display: '15' },
@@ -46,7 +41,7 @@ export class EditSubmissionComponent implements OnInit, OnDestroy {
   private sub: Subscription;
   private submission: Submission;
 
-  constructor(private route: ActivatedRoute, private _submissionService: SubmissionService) { }
+  constructor(private route: ActivatedRoute, private _submissionService: SubmissionService, private _router: Router) { }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
@@ -62,7 +57,18 @@ export class EditSubmissionComponent implements OnInit, OnDestroy {
   }
 
   updateSubmission() {
-    console.log('put');
-    this._submissionService.putSubmission(this.submission).subscribe();
+    if (this.allFieldsFilledIn()) {
+      this._submissionService.putSubmission(this.submission).subscribe();
+      this._router.navigate(['/admin/submissions']);
+    }
+    this.showErrorMessage = true;
+  }
+
+  cancelSubmissions() {
+    this._router.navigate(['/admin/submissions']);
+  }
+
+  allFieldsFilledIn() {
+    return this.submission.EndTimeInHours && this.submission.StartTimeInHours && this.submission.Room;
   }
 }
