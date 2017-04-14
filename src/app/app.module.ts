@@ -15,6 +15,7 @@ import { SubmissionComponent } from './submission/submission.component';
 import { SubmissionsComponent } from './submissions/submissions.component';
 import { SubmissionsStatusComponent } from './admin/submissions-status/submissions-status.component';
 import { EditSubmissionComponent } from './admin/edit-submission/edit-submission.component';
+import { ScheduleComponent } from './schedule/schedule.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { EditSubmissionComponent } from './admin/edit-submission/edit-submission
     SubmissionComponent,
     SubmissionsComponent,
     SubmissionsStatusComponent,
-    EditSubmissionComponent
+    EditSubmissionComponent,
+    ScheduleComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,22 @@
+<div class="submissions-page">
+  <h1 class="text-center">Schedule</h1>
+  <div class="container">
+    <div class="time-column">
+      <h3>Time</h3>
+      <p class="time-box">8:00</p>
+      <p class="time-box">9:00</p><br>
+      <p class="time-box">10:00</p><br>
+  </div>
+  <div>
+    <div *ngFor="let submission of submissions" class="submission-summary"
+         [routerLink]="['../edit-submission', submission.Id]">
+      <p *ngIf="!submission.Room" class="not-scheduled">Needs to be scheduled</p>
+      <p>{{ submission.SubmissionTitle }}</p>
+      <p>by: {{submission.LastName}}, {{ submission.FirstName }}</p>
+      <div *ngIf="submission.Room">
+        <p>room: {{submission.Room}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
