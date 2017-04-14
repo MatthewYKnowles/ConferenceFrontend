@@ -47,7 +47,7 @@
     <div class="form-group row"
          [ngClass]="{'has-error': subAbstract.invalid && subAbstract.touched, 'has-success': subAbstract.valid && subAbstract.touched}">
       <label class="col-m-2 col-form-label">Submission Abstract</label>
-      <div class="col-lg-10">
+      <div class="col-m-10">
         <textarea #subAbstract="ngModel" name="submissionAbstract" rows="5" class="form-control"
                   [(ngModel)]="submissionAbstract" required></textarea>
         <span class="help-block"

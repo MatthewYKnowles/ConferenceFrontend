@@ -19,7 +19,7 @@ export class SubmissionsStatusComponent implements OnInit {
 
   getSubmissionStatus(): void {
     this._submissionsService.getSubmissionsStatus().subscribe((submissionsStatus) => {
-      this.submissionsStatus = submissionsStatus.status;
+      this.submissionsStatus = submissionsStatus.Status;
     });
   }
 

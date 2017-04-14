@@ -1,4 +1,5 @@
 export class Submission {
+  Id: string;
   FirstName: string;
   LastName: string;
   Company: string;
@@ -6,7 +7,9 @@ export class Submission {
   Email: string;
   Bio: string;
   SubmissionTitle: string;
-  StartTime: Date;
-  EndTime: Date;
+  StartTimeInHours: number;
+  StartTimeInMinutes: number;
+  EndTimeInHours: number;
+  EndTimeInMinutes: number;
   Room: string;
 }

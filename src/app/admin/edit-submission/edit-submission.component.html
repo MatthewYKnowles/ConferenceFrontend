@@ -1,29 +1,30 @@
-<h1 class="text-center">{{submission.submissionTitle}}</h1>
+<div *ngIf="submission">
+<h1 class="text-center">{{submission.SubmissionTitle}}</h1>
 <div class="container">
   <div class="row">
     <div class="col-sm-3">
       <h2>Speaker:</h2>
     </div>
     <div class="col-sm-9">
-      <h2>{{submission.firstName}} {{submission.lastName}}</h2>
+      <h2>{{submission.FirstName}} {{submission.LastName}}</h2>
     </div>
   </div>
   <div>
     <h3>Session Start Time
-      <select [(ngModel)]="startTimeInHours">
+      <select [(ngModel)]="submission.StartTimeInHours">
         <option *ngFor="let hour of hourOptions" [value]="hour.value">{{hour.display}}</option>
       </select>
       :
-      <select [(ngModel)]="startTimeInMinutes">
+      <select [(ngModel)]="submission.StartTimeInMinutes">
         <option *ngFor="let minute of minuteOptions" [value]="minute.value">{{minute.display}}</option>
       </select>
     </h3>
     <h3 class="end-time">End Time
-      <select [(ngModel)]="endTimeInHours">
+      <select [(ngModel)]="submission.EndTimeInHours">
         <option *ngFor="let hour of hourOptions" [value]="hour.value">{{hour.display}}</option>
       </select>
       :
-      <select [(ngModel)]="endTimeInMinutes">
+      <select [(ngModel)]="submission.EndTimeInMinutes">
         <option *ngFor="let minute of minuteOptions" [value]="minute.value">{{minute.display}}</option>
       </select>
     </h3>
@@ -38,8 +39,9 @@
       <h3>Abstract: </h3><br>
     </div>
     <div class="col-sm-10 submission-abstract">
-      <h4>{{submission.submissionAbstract}}</h4>
+      <h4>{{submission.SubmissionAbstract}}</h4>
     </div>
   </div>
 </div>
-
+<button (click)="updateSubmission()">Update Submission</button>
+</div>

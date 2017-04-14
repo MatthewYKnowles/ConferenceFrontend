@@ -44,8 +44,7 @@ export class EditSubmissionComponent implements OnInit, OnDestroy {
   ];
   private id: string;
   private sub: Subscription;
-  private submission: Submission = new Submission();
-  private startTimeInMinutes: number;
+  private submission: Submission;
 
   constructor(private route: ActivatedRoute, private _submissionService: SubmissionService) { }
 
@@ -55,13 +54,6 @@ export class EditSubmissionComponent implements OnInit, OnDestroy {
     });
     this._submissionService.getSubmission(this.id).subscribe((submission) => {
       this.submission = submission;
-      this.startTime = new Date(submission.startTime);
-      this.endTime = new Date(submission.endTime);
-      this.startTimeInHours = this.startTime.getUTCHours();
-      this.startTimeInMinutes = this.startTime.getUTCMinutes();
-      this.endTimeInHours = this.endTime.getUTCHours();
-      this.endTimeInMinutes = this.endTime.getUTCMinutes();
-      this.room = submission.room;
     });
   }
 
@@ -69,4 +61,8 @@ export class EditSubmissionComponent implements OnInit, OnDestroy {
     this.sub.unsubscribe();
   }
 
+  updateSubmission() {
+    console.log('put');
+    this._submissionService.putSubmission(this.submission).subscribe();
+  }
 }

@@ -20,12 +20,14 @@ export class SubmissionService {
   }
 
   getSubmission(id: string): Observable<any> {
+    console.log(id);
     return this._http.get(this._url + '/'  + id, this._options)
       .map((response: Response) => response.json());
   }
 
-  putSubmission(id: string, submission: Submission) {
-    return this._http.put(this._url + '/' + id, JSON.stringify(submission), this._options);
+  putSubmission(submission: Submission): Observable<any> {
+    console.log(submission);
+    return this._http.put(this._url + '/' + submission.Id, JSON.stringify(submission), this._options);
   }
 
   postSubmission(firstName: string, lastName: string, company: string, email: string, bio: string, submissionTitle: string,
