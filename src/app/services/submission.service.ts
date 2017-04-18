@@ -6,7 +6,7 @@ import {Submission} from '../models/submission';
 
 @Injectable()
 export class SubmissionService {
-  public _url = 'http://localhost:51508/api/submissions';
+  public _url = 'http://localhost:59335/api/submissions';
   private _headers: any = new Headers({'Content-Type': 'application/json'});
   private _options: any;
 

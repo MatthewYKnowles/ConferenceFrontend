@@ -9,7 +9,7 @@
     </div>
     <div>
       <h3>Purple Room</h3>
-      <div *ngFor="let submission of submissions" class="submission-summary">
+      <div *ngFor="let submission of purpleRoomSubmissions" class="submission-summary">
         <p>{{ submission.SubmissionTitle }}</p>
         <p>by: {{submission.LastName}}, {{ submission.FirstName }}</p>
         <div *ngIf="submission.Room">
@@ -19,6 +19,23 @@
     </div>
     <div>
       <h3>Red Room</h3>
+      <div *ngFor="let submission of redRoomSubmissions" class="submission-summary">
+        <p>{{ submission.SubmissionTitle }}</p>
+        <p>by: {{submission.LastName}}, {{ submission.FirstName }}</p>
+        <div *ngIf="submission.Room">
+          <p>Time: {{submission.StartTimeInHours}} : {{submission.StartTimeInMinutes}} - {{submission.EndTimeInHours}} : {{submission.EndTimeInMinutes}}</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h3>Green Room</h3>
+      <div *ngFor="let submission of greenRoomSubmissions" class="submission-summary">
+        <p>{{ submission.SubmissionTitle }}</p>
+        <p>by: {{submission.LastName}}, {{ submission.FirstName }}</p>
+        <div *ngIf="submission.Room">
+          <p>room: {{submission.Room}}</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
