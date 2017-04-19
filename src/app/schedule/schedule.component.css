@@ -1,6 +1,30 @@
 .submission-summary {
   border: solid black;
   width: 200px;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+}
+
+.time {
+  width: 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+.start-time {
+  margin: 0;
+}
+
+.end-time {
+  margin-top: auto;
+}
+
+.schedule {
+  width: 140px;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
 }
 
 .container {

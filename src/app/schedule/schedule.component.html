@@ -1,39 +1,42 @@
 <div class="submissions-page">
   <h1 class="text-center">Schedule</h1>
   <div class="container">
-    <div class="time-column">
-      <h3>Time</h3>
-      <p class="time-box">8:00</p>
-      <p class="time-box">9:00</p>
-      <p class="time-box">10:00</p>
-    </div>
     <div>
       <h3>Purple Room</h3>
       <div *ngFor="let submission of purpleRoomSubmissions" class="submission-summary">
-        <p>{{ submission.SubmissionTitle }}</p>
-        <p>by: {{submission.LastName}}, {{ submission.FirstName }}</p>
-        <div *ngIf="submission.Room">
-          <p>room: {{submission.Room}}</p>
+        <div class="time">
+          <div class="start-time">{{submission.StartTimeInHours}} : {{submission.StartTimeInMinutes | twoDigits}}</div>
+          <div class="end-time">{{submission.EndTimeInHours}} : {{submission.EndTimeInMinutes | twoDigits}}</div>
+        </div>
+        <div class="schedule">
+          <p class="submission-title">{{ submission.SubmissionTitle }}</p>
+          <p class="submission-name">by: {{submission.LastName}}, {{ submission.FirstName }}</p>
         </div>
       </div>
     </div>
     <div>
       <h3>Red Room</h3>
       <div *ngFor="let submission of redRoomSubmissions" class="submission-summary">
-        <p>{{ submission.SubmissionTitle }}</p>
-        <p>by: {{submission.LastName}}, {{ submission.FirstName }}</p>
-        <div *ngIf="submission.Room">
-          <p>Time: {{submission.StartTimeInHours}} : {{submission.StartTimeInMinutes}} - {{submission.EndTimeInHours}} : {{submission.EndTimeInMinutes}}</p>
+        <div class="time">
+          <div class="start-time">{{submission.StartTimeInHours}} : {{submission.StartTimeInMinutes | twoDigits}}</div>
+          <div class="end-time">{{submission.EndTimeInHours}} : {{submission.EndTimeInMinutes | twoDigits}}</div>
+        </div>
+        <div class="schedule">
+          <p class="submission-title">{{ submission.SubmissionTitle }}</p>
+          <p class="submission-name">by: {{submission.LastName}}, {{ submission.FirstName }}</p>
         </div>
       </div>
     </div>
     <div>
       <h3>Green Room</h3>
       <div *ngFor="let submission of greenRoomSubmissions" class="submission-summary">
-        <p>{{ submission.SubmissionTitle }}</p>
-        <p>by: {{submission.LastName}}, {{ submission.FirstName }}</p>
-        <div *ngIf="submission.Room">
-          <p>room: {{submission.Room}}</p>
+        <div class="time">
+          <div class="start-time">{{submission.StartTimeInHours}} : {{submission.StartTimeInMinutes | twoDigits}}</div>
+          <div class="end-time">{{submission.EndTimeInHours}} : {{submission.EndTimeInMinutes | twoDigits}}</div>
+        </div>
+        <div class="schedule">
+          <p class="submission-title">{{ submission.SubmissionTitle }}</p>
+          <p class="submission-name">by: {{submission.LastName}}, {{ submission.FirstName }}</p>
         </div>
       </div>
     </div>
