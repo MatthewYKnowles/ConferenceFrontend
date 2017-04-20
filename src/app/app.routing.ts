@@ -7,6 +7,7 @@ import {SubmissionsComponent} from './submissions/submissions.component';
 import {SubmissionsStatusComponent} from './admin/submissions-status/submissions-status.component';
 import {EditSubmissionComponent} from './admin/edit-submission/edit-submission.component';
 import {ScheduleComponent} from './schedule/schedule.component';
+import {ViewSubmissionComponent} from "./view-submission/view-submission.component";
 
 export const routing = RouterModule.forRoot([
   { path: '',
@@ -23,6 +24,10 @@ export const routing = RouterModule.forRoot([
       {
         path: 'schedule',
         component: ScheduleComponent
+      },
+      {
+        path: 'view-submission/:id',
+        component: ViewSubmissionComponent
       }
     ] },
   {

@@ -1,6 +1,5 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Subscription} from 'rxjs/Subscription';
 import {SubmissionService} from '../../services/submission.service';
 import {Submission} from '../../models/submission';
 
@@ -10,7 +9,7 @@ import {Submission} from '../../models/submission';
   styleUrls: ['./edit-submission.component.css'],
   providers: [SubmissionService]
 })
-export class EditSubmissionComponent implements OnInit, OnDestroy {
+export class EditSubmissionComponent implements OnInit {
   showErrorMessage: boolean;
   minuteOptions: any = [
     { value: 0, display: '00' },
@@ -38,22 +37,17 @@ export class EditSubmissionComponent implements OnInit, OnDestroy {
     { name: 'Purple' }
   ];
   private id: string;
-  private sub: Subscription;
   private submission: Submission;
 
   constructor(private route: ActivatedRoute, private _submissionService: SubmissionService, private _router: Router) { }
 
   ngOnInit() {
-    this.sub = this.route.params.subscribe(params => {
+    this.route.params.subscribe(params => {
       this.id = params['id'];
     });
     this._submissionService.getSubmission(this.id).subscribe((submission) => {
       this.submission = submission;
     });
-  }
-
-  ngOnDestroy() {
-    this.sub.unsubscribe();
   }
 
   updateSubmission() {

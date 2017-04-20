@@ -22,10 +22,11 @@
         <input type="text" name="company" class="form-control" [(ngModel)]="submission.Company">
       </div>
     </div>
-    <div class="form-group row">
+    <div class="form-group row" [ngClass]="{'has-error': email.invalid && email.touched, 'has-success': email.valid && email.touched}">
       <label class="col-2 col-form-label">Email Address</label>
       <div class="col-10">
-        <input type="email" name="email" class="form-control" [(ngModel)]="submission.Email">
+        <input #email="ngModel" type="email" name="email" class="form-control" [(ngModel)]="submission.Email" required>
+        <span class="help-block" *ngIf="email.invalid && email.touched">Email required</span>
       </div>
     </div>
     <div class="form-group row">

@@ -3,7 +3,7 @@
   <div class="container">
     <div>
       <h3>Purple Room</h3>
-      <div *ngFor="let submission of purpleRoomSubmissions" class="submission-summary">
+      <div *ngFor="let submission of purpleRoomSubmissions" class="submission-summary" [routerLink]="['/view-submission', submission.Id]">
         <div class="time">
           <div class="start-time">{{submission.StartTimeInHours}} : {{submission.StartTimeInMinutes | twoDigits}}</div>
           <div class="end-time">{{submission.EndTimeInHours}} : {{submission.EndTimeInMinutes | twoDigits}}</div>
@@ -16,7 +16,7 @@
     </div>
     <div>
       <h3>Red Room</h3>
-      <div *ngFor="let submission of redRoomSubmissions" class="submission-summary">
+      <div *ngFor="let submission of redRoomSubmissions" class="submission-summary" [routerLink]="['/view-submission', submission.Id]">
         <div class="time">
           <div class="start-time">{{submission.StartTimeInHours}} : {{submission.StartTimeInMinutes | twoDigits}}</div>
           <div class="end-time">{{submission.EndTimeInHours}} : {{submission.EndTimeInMinutes | twoDigits}}</div>
@@ -29,7 +29,7 @@
     </div>
     <div>
       <h3>Green Room</h3>
-      <div *ngFor="let submission of greenRoomSubmissions" class="submission-summary">
+      <div *ngFor="let submission of greenRoomSubmissions" class="submission-summary" [routerLink]="['/view-submission', submission.Id]">
         <div class="time">
           <div class="start-time">{{submission.StartTimeInHours}} : {{submission.StartTimeInMinutes | twoDigits}}</div>
           <div class="end-time">{{submission.EndTimeInHours}} : {{submission.EndTimeInMinutes | twoDigits}}</div>

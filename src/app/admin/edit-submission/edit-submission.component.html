@@ -1,50 +1,50 @@
 <div *ngIf="submission">
-<h1 class="text-center">{{submission.SubmissionTitle}}</h1>
-<div class="container">
-  <div class="row">
-    <div class="col-sm-3">
-      <h2>Speaker:</h2>
+  <h1 class="text-center">{{submission.SubmissionTitle}}</h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <h2>Speaker:</h2>
+      </div>
+      <div class="col-sm-9">
+        <h2>{{submission.FirstName}} {{submission.LastName}}</h2>
+      </div>
     </div>
-    <div class="col-sm-9">
-      <h2>{{submission.FirstName}} {{submission.LastName}}</h2>
+    <div>
+      <h3>Session Start Time
+        <select [(ngModel)]="submission.StartTimeInHours">
+          <option *ngFor="let hour of hourOptions" [value]="hour.value">{{hour.display}}</option>
+        </select>
+        :
+        <select [(ngModel)]="submission.StartTimeInMinutes">
+          <option *ngFor="let minute of minuteOptions" [value]="minute.value">{{minute.display}}</option>
+        </select>
+      </h3>
+      <h3 class="end-time">End Time
+        <select [(ngModel)]="submission.EndTimeInHours">
+          <option *ngFor="let hour of hourOptions" [value]="hour.value">{{hour.display}}</option>
+        </select>
+        :
+        <select [(ngModel)]="submission.EndTimeInMinutes">
+          <option *ngFor="let minute of minuteOptions" [value]="minute.value">{{minute.display}}</option>
+        </select>
+      </h3>
+      <h3>Room:
+        <select [(ngModel)]="submission.Room">
+          <option *ngFor="let room of roomOptions" [value]="room.name">{{room.name}}</option>
+        </select>
+      </h3>
     </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <h3>Abstract: </h3><br>
+      </div>
+      <div class="col-sm-10 submission-abstract">
+        <h4>{{submission.SubmissionAbstract}}</h4>
+      </div>
+    </div>
+    <button (click)="updateSubmission()" class="btn">Save</button>
+    <button (click)="cancelSubmissions()" class="btn">Cancel</button>
+    <button (click)="deleteSubmission()" class="btn btn-danger">Delete</button>
+    <h1 *ngIf="showErrorMessage" class="text-warning">Please make a selection for each field</h1>
   </div>
-  <div>
-    <h3>Session Start Time
-      <select [(ngModel)]="submission.StartTimeInHours">
-        <option *ngFor="let hour of hourOptions" [value]="hour.value">{{hour.display}}</option>
-      </select>
-      :
-      <select [(ngModel)]="submission.StartTimeInMinutes">
-        <option *ngFor="let minute of minuteOptions" [value]="minute.value">{{minute.display}}</option>
-      </select>
-    </h3>
-    <h3 class="end-time">End Time
-      <select [(ngModel)]="submission.EndTimeInHours">
-        <option *ngFor="let hour of hourOptions" [value]="hour.value">{{hour.display}}</option>
-      </select>
-      :
-      <select [(ngModel)]="submission.EndTimeInMinutes">
-        <option *ngFor="let minute of minuteOptions" [value]="minute.value">{{minute.display}}</option>
-      </select>
-    </h3>
-    <h3>Room:
-      <select [(ngModel)]="submission.Room">
-        <option *ngFor="let room of roomOptions" [value]="room.name">{{room.name}}</option>
-      </select>
-    </h3>
-  </div>
-  <div class="row">
-    <div class="col-sm-2">
-      <h3>Abstract: </h3><br>
-    </div>
-    <div class="col-sm-10 submission-abstract">
-      <h4>{{submission.SubmissionAbstract}}</h4>
-    </div>
-  </div>
-  <button (click)="updateSubmission()" class="btn">Save</button>
-  <button (click)="cancelSubmissions()" class="btn">Cancel</button>
-  <button (click)="deleteSubmission()" class="btn btn-danger">Delete</button>
-  <h1 *ngIf="showErrorMessage" class="text-warning">Please make a selection for each field</h1>
-</div>
 </div>

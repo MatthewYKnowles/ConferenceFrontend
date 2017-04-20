@@ -1,0 +1,13 @@
+.view-submission {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.submission-abstract {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: row;
+  max-width: 600px;
+}

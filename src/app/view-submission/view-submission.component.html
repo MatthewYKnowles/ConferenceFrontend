@@ -1,3 +1,16 @@
-<p>
-  view-submission works!
-</p>
+<div *ngIf="submission" class="view-submission">
+  <div class="submission-title">
+    <h1>{{submission.SubmissionTitle}}</h1>
+  </div>
+  <div>
+    <p>{{submission.FirstName}} {{submission.LastName}}</p>
+  </div>
+  <div>
+    <p class="submission-time">{{submission.StartTimeInHours}}:{{submission.StartTimeInMinutes |
+      twoDigits}}-{{submission.EndTimeInHours}}:{{submission.EndTimeInMinutes | twoDigits}} in the
+      {{submission.Room}} room</p>
+  </div>
+  <div class="submission-abstract">
+    <p>{{submission.SubmissionAbstract}}</p>
+  </div>
+</div>
