@@ -9,8 +9,8 @@ import {Submission} from '../models/submission';
   providers: [SubmissionService]
 })
 export class ScheduleComponent implements OnInit {
-  greenRoomSubmissions: any;
-  redRoomSubmissions: any;
+  private greenRoomSubmissions: any;
+  private redRoomSubmissions: any;
   private submissions: any;
   private purpleRoomSubmissions: any;
 
@@ -20,6 +20,9 @@ export class ScheduleComponent implements OnInit {
       this.redRoomSubmissions = this.submissions.filter((submission) => {return submission.Room === 'Red'; });
       this.purpleRoomSubmissions = this.submissions.filter((submission) => {return submission.Room === 'Purple'; });
       this.greenRoomSubmissions = this.submissions.filter((submission) => {return submission.Room === 'Green'; });
+      this.purpleRoomSubmissions.sort((a, b) => {return a.StartTimeInHours - b.StartTimeInHours; });
+      this.redRoomSubmissions.sort((a, b) => {return a.StartTimeInHours - b.StartTimeInHours; });
+      this.greenRoomSubmissions.sort((a, b) => {return a.StartTimeInHours - b.StartTimeInHours; });
     });
   }
   ngOnInit() {

@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Subscription} from 'rxjs';
+import {Subscription} from 'rxjs/Subscription';
 import {SubmissionService} from '../../services/submission.service';
 import {Submission} from '../../models/submission';
 
@@ -59,16 +59,25 @@ export class EditSubmissionComponent implements OnInit, OnDestroy {
   updateSubmission() {
     if (this.allFieldsFilledIn()) {
       this._submissionService.putSubmission(this.submission).subscribe();
-      this._router.navigate(['/admin/submissions']);
+      this.navigateToSubmissions();
     }
     this.showErrorMessage = true;
   }
 
+  deleteSubmission() {
+    this._submissionService.deleteSubmission(this.submission.Id).subscribe();
+    this.navigateToSubmissions();
+  }
+
   cancelSubmissions() {
-    this._router.navigate(['/admin/submissions']);
+    this.navigateToSubmissions();
   }
 
   allFieldsFilledIn() {
     return this.submission.EndTimeInHours && this.submission.StartTimeInHours && this.submission.Room;
+  }
+
+  navigateToSubmissions() {
+    this._router.navigate(['/admin/submissions']);
   }
 }

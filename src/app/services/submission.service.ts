@@ -48,4 +48,8 @@ export class SubmissionService {
     submissionStatus.Status = 'open';
     return this._http.post(this._url + 'Status', JSON.stringify(submissionStatus), this._options);
   }
+
+  deleteSubmission(id: string) {
+    return this._http.delete(this._url + '/' + id, this._options);
+  }
 }
