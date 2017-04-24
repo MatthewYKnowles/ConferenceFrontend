@@ -6,8 +6,8 @@
     <p>{{ submission.SubmissionTitle }}</p>
     <p>by: {{submission.LastName}}, {{ submission.FirstName }}</p>
     <div *ngIf="submission.Room">
-      <p>start time: {{submission.StartTimeInHours}} : {{displayAsMinutes(submission.StartTimeInMinutes)}}</p>
-      <p>end time: {{submission.EndTimeInHours}} : {{displayAsMinutes(submission.EndTimeInMinutes)}}</p>
+      <p>start time: {{submission.StartTimeInHours}} : {{submission.StartTimeInMinutes | twoDigits}}</p>
+      <p>end time: {{submission.EndTimeInHours}} : {{submission.EndTimeInMinutes | twoDigits}}</p>
       <p>room: {{submission.Room}}</p>
     </div>
   </div>

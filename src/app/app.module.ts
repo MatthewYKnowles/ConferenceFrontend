@@ -18,6 +18,7 @@ import { EditSubmissionComponent } from './admin/edit-submission/edit-submission
 import { ScheduleComponent } from './schedule/schedule.component';
 import { TwoDigitsPipe } from './two-digits.pipe';
 import { ViewSubmissionComponent } from './view-submission/view-submission.component';
+import { SchedulePostedStatusComponent } from './admin/schedule-posted-status/schedule-posted-status.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ViewSubmissionComponent } from './view-submission/view-submission.compo
     EditSubmissionComponent,
     ScheduleComponent,
     TwoDigitsPipe,
-    ViewSubmissionComponent
+    ViewSubmissionComponent,
+    SchedulePostedStatusComponent
   ],
   imports: [
     BrowserModule,

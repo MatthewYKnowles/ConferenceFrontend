@@ -1,0 +1,3 @@
+<h1>The schedule is currently {{schedulePostedStatus}} </h1>
+<button *ngIf="scheduleIsPosted()" (click)="unpostSchedule()">Unpost Schedule</button>
+<button *ngIf="scheduleIsNotPosted()" (click)="postSchedule()">Post Schedule</button>

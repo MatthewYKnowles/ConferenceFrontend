@@ -9,6 +9,7 @@ import {SubmissionService} from '../services/submission.service';
 })
 export class NavigationComponent implements OnInit {
   private submissionsStatus: string;
+  private schedulePostedStatus: string;
 
   constructor(private _submissionsService: SubmissionService) {}
 
@@ -22,7 +23,17 @@ export class NavigationComponent implements OnInit {
     });
   }
 
+  getSchedulePostedStatus(): void {
+    this._submissionsService.getSchedulePostedStatus().subscribe((schedulePostedStatus) => {
+      this.schedulePostedStatus = schedulePostedStatus.Status;
+    });
+  }
+
   submissionsStatusIsOpen(): boolean {
     return this.submissionsStatus === 'open';
   }
+
+  scheduleIsPosted(): boolean {
+    return this.schedulePostedStatus === 'posted';
+  };
 }

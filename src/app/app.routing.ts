@@ -8,6 +8,7 @@ import {SubmissionsStatusComponent} from './admin/submissions-status/submissions
 import {EditSubmissionComponent} from './admin/edit-submission/edit-submission.component';
 import {ScheduleComponent} from './schedule/schedule.component';
 import {ViewSubmissionComponent} from "./view-submission/view-submission.component";
+import {SchedulePostedStatusComponent} from "./admin/schedule-posted-status/schedule-posted-status.component";
 
 export const routing = RouterModule.forRoot([
   { path: '',
@@ -34,7 +35,6 @@ export const routing = RouterModule.forRoot([
     path: 'admin',
     component: AdminComponent,
     children: [
-      {path: '', component: HomeComponent},
       {
         path: 'submission',
         component: SubmissionComponent
@@ -46,6 +46,10 @@ export const routing = RouterModule.forRoot([
       {
         path: 'submissions',
         component: SubmissionsComponent
+      },
+      {
+        path: 'schedule-posted-status',
+        component: SchedulePostedStatusComponent
       },
       {
         path: 'submissions-status',

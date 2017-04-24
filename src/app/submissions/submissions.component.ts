@@ -13,18 +13,11 @@ export class SubmissionsComponent implements OnInit {
   constructor(private _submissionService: SubmissionService) {
     this._submissionService.getAllSubmissions().subscribe((submissions) => {
       this.submissions = submissions;
+      this.submissions.sort((a, b) => {return a.StartTimeInMinutes - b.StartTimeInMinutes; });
+      this.submissions.sort((a, b) => {return a.StartTimeInHours - b.StartTimeInHours; });
     });
   }
 
   ngOnInit() {
-  }
-
-  displayAsMinutes(minutes) {
-    let minutesAsAString = '';
-    if (minutes <= 9) {
-      minutesAsAString += '0';
-    }
-    minutesAsAString += minutes.toString();
-    return minutesAsAString;
   }
 }
