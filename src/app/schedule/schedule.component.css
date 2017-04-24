@@ -46,3 +46,15 @@
   margin: 0;
   justify-content: space-around;
 }
+
+.purple-room {
+   background-color: plum;
+ }
+
+.red-room {
+  background-color: lightcoral;
+}
+
+.green-room {
+  background-color: lightgreen;
+}

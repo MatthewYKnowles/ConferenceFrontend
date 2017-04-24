@@ -17,12 +17,9 @@ export class ScheduleComponent implements OnInit {
   constructor(private _submissionService: SubmissionService) {
     this._submissionService.getAllSubmissions().subscribe((submissions) => {
       this.submissions = submissions;
-      this.redRoomSubmissions = this.submissions.filter((submission) => {return submission.Room === 'Red'; });
-      this.purpleRoomSubmissions = this.submissions.filter((submission) => {return submission.Room === 'Purple'; });
-      this.greenRoomSubmissions = this.submissions.filter((submission) => {return submission.Room === 'Green'; });
-      this.purpleRoomSubmissions.sort((a, b) => {return a.StartTimeInHours - b.StartTimeInHours; });
-      this.redRoomSubmissions.sort((a, b) => {return a.StartTimeInHours - b.StartTimeInHours; });
-      this.greenRoomSubmissions.sort((a, b) => {return a.StartTimeInHours - b.StartTimeInHours; });
+      this.submissions = this.submissions.filter((submission) => {return submission.Room; });
+      this.submissions.sort((a, b) => {return a.StartTimeInMinutes - b.StartTimeInMinutes; });
+      this.submissions.sort((a, b) => {return a.StartTimeInHours - b.StartTimeInHours; });
     });
   }
   ngOnInit() {

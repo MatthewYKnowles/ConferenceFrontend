@@ -2,41 +2,16 @@
   <h1 class="text-center">Schedule</h1>
   <div class="container">
     <div>
-      <h3>Purple Room</h3>
-      <div *ngFor="let submission of purpleRoomSubmissions" class="submission-summary" [routerLink]="['/view-submission', submission.Id]">
+      <div *ngFor="let submission of submissions" class="submission-summary" [routerLink]="['/view-submission', submission.Id]"
+           [ngClass]="{'red-room': submission.Room === 'Red', 'purple-room': submission.Room === 'Purple', 'green-room': submission.Room === 'Green'}">
         <div class="time">
           <div class="start-time">{{submission.StartTimeInHours}} : {{submission.StartTimeInMinutes | twoDigits}}</div>
           <div class="end-time">{{submission.EndTimeInHours}} : {{submission.EndTimeInMinutes | twoDigits}}</div>
         </div>
         <div class="schedule">
           <p class="submission-title">{{ submission.SubmissionTitle }}</p>
-          <p class="submission-name">by: {{submission.LastName}}, {{ submission.FirstName }}</p>
-        </div>
-      </div>
-    </div>
-    <div>
-      <h3>Red Room</h3>
-      <div *ngFor="let submission of redRoomSubmissions" class="submission-summary" [routerLink]="['/view-submission', submission.Id]">
-        <div class="time">
-          <div class="start-time">{{submission.StartTimeInHours}} : {{submission.StartTimeInMinutes | twoDigits}}</div>
-          <div class="end-time">{{submission.EndTimeInHours}} : {{submission.EndTimeInMinutes | twoDigits}}</div>
-        </div>
-        <div class="schedule">
-          <p class="submission-title">{{ submission.SubmissionTitle }}</p>
-          <p class="submission-name">by: {{submission.LastName}}, {{ submission.FirstName }}</p>
-        </div>
-      </div>
-    </div>
-    <div>
-      <h3>Green Room</h3>
-      <div *ngFor="let submission of greenRoomSubmissions" class="submission-summary" [routerLink]="['/view-submission', submission.Id]">
-        <div class="time">
-          <div class="start-time">{{submission.StartTimeInHours}} : {{submission.StartTimeInMinutes | twoDigits}}</div>
-          <div class="end-time">{{submission.EndTimeInHours}} : {{submission.EndTimeInMinutes | twoDigits}}</div>
-        </div>
-        <div class="schedule">
-          <p class="submission-title">{{ submission.SubmissionTitle }}</p>
-          <p class="submission-name">by: {{submission.LastName}}, {{ submission.FirstName }}</p>
+          <p class="submission-name">by: {{ submission.FirstName }} {{submission.LastName}}</p>
+          <p class="submission-room">room: {{submission.Room}}</p>
         </div>
       </div>
     </div>
