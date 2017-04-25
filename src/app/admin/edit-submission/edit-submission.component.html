@@ -42,7 +42,8 @@
         <h4>{{submission.SubmissionAbstract}}</h4>
       </div>
     </div>
-    <button (click)="updateSubmission()" class="btn">Save</button>
+    <button (click)="updateSubmission()" class="btn btn-success">Save</button>
+    <button (click)="unscheduleSubmission()" class="btn btn-warning">Unschedule</button>
     <button (click)="cancelSubmissions()" class="btn">Cancel</button>
     <button (click)="deleteSubmission()" class="btn btn-danger">Delete</button>
     <h1 *ngIf="showErrorMessage" class="text-warning">Please make a selection for each field</h1>

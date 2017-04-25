@@ -10,14 +10,13 @@ import {SubmissionService} from '../services/submission.service';
 export class SubmissionsComponent implements OnInit {
   submissions: any;
 
-  constructor(private _submissionService: SubmissionService) {
+  constructor(private _submissionService: SubmissionService) {}
+
+  ngOnInit() {
     this._submissionService.getAllSubmissions().subscribe((submissions) => {
       this.submissions = submissions;
       this.submissions.sort((a, b) => {return a.StartTimeInMinutes - b.StartTimeInMinutes; });
       this.submissions.sort((a, b) => {return a.StartTimeInHours - b.StartTimeInHours; });
     });
-  }
-
-  ngOnInit() {
   }
 }

@@ -1,61 +1,48 @@
-<div class="container">
-  <form>
-    <div class="form-group row"
-         [ngClass]="{'has-error': fName.invalid && fName.touched, 'has-success': fName.valid && fName.touched}">
-      <label class="col-2 col-form-label">First Name</label>
-      <div class="col-10">
-        <input #fName="ngModel" name="firstName" type="text" class="form-control" [(ngModel)]="submission.FirstName" required>
-        <span class="help-block" *ngIf="fName.invalid && fName.touched">First name required</span>
-      </div>
+<div class="container" *ngIf="submissionsStatusIsOpen()">
+  <h1 class="text-center">Submission</h1>
+  <form class="submission-form">
+    <div class="submission-block">
+      <label class="submission-form-label">First Name</label>
+      <input #fName="ngModel" name="firstName" type="text" class="form-control"
+             [ngClass]="{'submission-error': fName.invalid, 'submission-success': fName.valid}"
+             [(ngModel)]="submission.FirstName" required>
     </div>
-    <div class="form-group row"
-         [ngClass]="{'has-error': lName.invalid && lName.touched, 'has-success': lName.valid && lName.touched}">
-      <label class="col-2 col-form-label">Last Name</label>
-      <div class="col-10">
-        <input #lName="ngModel" name="lastName" type="text" class="form-control" [(ngModel)]="submission.LastName" required>
-        <span class="help-block" *ngIf="lName.invalid && lName.touched">Last name required</span>
-      </div>
+    <div class="submission-block">
+      <label class="submission-form-label">Last Name</label>
+      <input #lName="ngModel" name="lastName" class="form-control" type="text"
+             [ngClass]="{'submission-error': lName.invalid, 'submission-success': lName.valid}"
+             [(ngModel)]="submission.LastName" required>
     </div>
-    <div class="form-group row">
-      <label class="col-2 col-form-label">Company</label>
-      <div class="col-10">
-        <input type="text" name="company" class="form-control" [(ngModel)]="submission.Company">
-      </div>
+    <div class="submission-block">
+      <label class="submission-form-label">Company</label>
+      <input name="company" class="form-control" type="text"
+             [(ngModel)]="submission.Company">
     </div>
-    <div class="form-group row" [ngClass]="{'has-error': email.invalid && email.touched, 'has-success': email.valid && email.touched}">
-      <label class="col-2 col-form-label">Email Address</label>
-      <div class="col-10">
-        <input #email="ngModel" type="email" name="email" class="form-control" [(ngModel)]="submission.Email" required>
-        <span class="help-block" *ngIf="email.invalid && email.touched">Email required</span>
-      </div>
+    <div class="submission-block">
+      <label class="submission-form-label">Email Address</label>
+      <input #email="ngModel" name="email" class="form-control" type="text"
+             [ngClass]="{'submission-error': email.invalid, 'submission-success': email.valid}"
+             [(ngModel)]="submission.Email" required>
     </div>
-    <div class="form-group row">
-      <label class="col-2 col-form-label">Personal Bio</label>
-      <div class="col-10">
-        <textarea type="text" name="bio" class="form-control" [(ngModel)]="submission.Bio"></textarea>
-      </div>
+    <div class="submission-block">
+      <label class="submission-form-label">Personal Bio</label>
+      <textarea name="bio" class="form-control" type="text"
+                [(ngModel)]="submission.Bio"></textarea>
     </div>
-    <div class="form-group row"
-         [ngClass]="{'has-error': subTitle.invalid && subTitle.touched, 'has-success': subTitle.valid && subTitle.touched}">
-      <label class="col-xs-2 col-form-label">Submission Title</label>
-      <div class="col-xs-10">
-        <input #subTitle="ngModel" name="submissionTitle" type="text" class="form-control"
-               [(ngModel)]="submission.SubmissionTitle"
-               required>
-        <span class="help-block" *ngIf="subTitle.invalid && subTitle.touched">Submission title required</span>
-      </div>
+    <div class="submission-block">
+      <label class="submission-form-label">Submission Title</label>
+      <input #subTitle="ngModel" name="subTitle" class="form-control" type="text"
+             [ngClass]="{'submission-error': subTitle.invalid, 'submission-success': subTitle.valid}"
+             [(ngModel)]="submission.SubmissionTitle" required>
     </div>
-    <div class="form-group row"
-         [ngClass]="{'has-error': subAbstract.invalid && subAbstract.touched, 'has-success': subAbstract.valid && subAbstract.touched}">
-      <label class="col-m-2 col-form-label">Submission Abstract</label>
-      <div class="col-m-10">
-        <textarea #subAbstract="ngModel" name="submissionAbstract" rows="5" class="form-control"
-                  [(ngModel)]="submission.SubmissionAbstract" required></textarea>
-        <span class="help-block"
-              *ngIf="subAbstract.invalid && subAbstract.touched">Submission abstract required</span>
-      </div>
+    <div class="submission-block">
+      <label class="submission-form-label">Submission Abstract</label>
+      <textarea rows="7" #subAbstract="ngModel" name="subAbstract" class="form-control" type="text"
+             [ngClass]="{'submission-error': subAbstract.invalid, 'submission-success': subAbstract.valid}"
+                [(ngModel)]="submission.SubmissionAbstract" required></textarea>
     </div>
+    <button (click)="SubmitSubmission()">Submit</button>
   </form>
-  <button (click)="SubmitSubmission()">Submit</button>
-  <div *ngIf="requiredFieldsEmpty">Please fill in all required fields</div>
+  <div *ngIf="requiredFieldsEmpty" class="submissions-closed text-center">Please fill in all required fields</div>
 </div>
+<p class="submissions-closed" *ngIf="submissionsStatusIsClosed()">Submissions are currently closed</p>

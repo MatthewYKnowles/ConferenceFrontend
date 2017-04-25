@@ -1,27 +1,33 @@
 import {SubmissionService} from '../services/submission.service';
 import {Router} from '@angular/router';
-import {Component} from '@angular/core';
-import {Submission} from "../models/submission";
+import {Component, OnInit} from '@angular/core';
+import {Submission} from '../models/submission';
 
 @Component({
   selector: 'app-conference-submission',
   templateUrl: './submission.component.html',
+  styleUrls: ['./submission.component.css'],
   providers: [SubmissionService]
 })
 
-export class SubmissionComponent {
+export class SubmissionComponent implements OnInit{
   submission: Submission;
   requiredFieldsEmpty = false;
+  private submissionsStatus: string;
 
-  constructor(private _submissionService: SubmissionService, private _router: Router) {
+  constructor(private _submissionsService: SubmissionService, private _router: Router) {
     this.submission = new Submission();
+  }
+
+  ngOnInit(): void {
+    this.getSubmissionStatus();
   }
 
   SubmitSubmission(): void {
     if (this.allRequiredFieldsAreNotFilledIn()) {
       this.requiredFieldsEmpty = true;
     } else {
-      this._submissionService.postSubmission(this.submission).subscribe();
+      this._submissionsService.postSubmission(this.submission).subscribe();
       this._router.navigate(['']);
     }
   }
@@ -29,5 +35,18 @@ export class SubmissionComponent {
   private allRequiredFieldsAreNotFilledIn(): boolean {
     return !this.submission.FirstName || !this.submission.LastName || !this.submission.SubmissionTitle
       || !this.submission.SubmissionAbstract || !this.submission.Email;
+  }
+
+  getSubmissionStatus(): void {
+    this._submissionsService.getSubmissionsStatus().subscribe((submissionsStatus) => {
+      this.submissionsStatus = submissionsStatus.Status;
+    });
+  }
+
+  submissionsStatusIsOpen(): boolean {
+    return this.submissionsStatus === 'open';
+  }
+  submissionsStatusIsClosed(): boolean {
+    return this.submissionsStatus === 'closed';
   }
 }

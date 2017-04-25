@@ -15,6 +15,7 @@ export class NavigationComponent implements OnInit {
 
   ngOnInit() {
     this.getSubmissionStatus();
+    this.getSchedulePostedStatus();
   }
 
   getSubmissionStatus(): void {
