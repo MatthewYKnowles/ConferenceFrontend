@@ -3,11 +3,10 @@
 
   <div *ngFor="let submission of submissions" class="submission-summary" [routerLink]="['../edit-submission', submission.Id]">
     <p *ngIf="!submission.Room" class="not-scheduled">Needs to be scheduled</p>
-    <p>{{ submission.SubmissionTitle }}</p>
+    <p class="submission-title">{{ submission.SubmissionTitle }}</p>
     <p>by: {{submission.LastName}}, {{ submission.FirstName }}</p>
     <div *ngIf="submission.Room">
-      <p>start time: {{submission.StartTimeInHours}} : {{submission.StartTimeInMinutes | twoDigits}}</p>
-      <p>end time: {{submission.EndTimeInHours}} : {{submission.EndTimeInMinutes | twoDigits}}</p>
+      <p>{{submission.StartTimeInHours}} : {{submission.StartTimeInMinutes | twoDigits}} - {{submission.EndTimeInHours}} : {{submission.EndTimeInMinutes | twoDigits}}</p>
       <p>room: {{submission.Room}}</p>
     </div>
   </div>

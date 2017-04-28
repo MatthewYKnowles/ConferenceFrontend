@@ -52,8 +52,9 @@ export class EditSubmissionComponent implements OnInit {
 
   updateSubmission() {
     if (this.allFieldsFilledIn()) {
-      this._submissionService.putSubmission(this.submission).subscribe();
-      this.navigateToSubmissions();
+      this._submissionService.putSubmission(this.submission).subscribe(() => {
+          this.navigateToSubmissions();
+      });
     }
     this.showErrorMessage = true;
   }
@@ -64,13 +65,15 @@ export class EditSubmissionComponent implements OnInit {
     this.submission.EndTimeInHours = 0;
     this.submission.EndTimeInMinutes = 0;
     this.submission.Room = null;
-    this._submissionService.putSubmission(this.submission).subscribe();
-    this.navigateToSubmissions();
+    this._submissionService.putSubmission(this.submission).subscribe(() => {
+      this.navigateToSubmissions();
+    });
   }
 
   deleteSubmission() {
-    this._submissionService.deleteSubmission(this.submission.Id).subscribe();
-    this.navigateToSubmissions();
+    this._submissionService.deleteSubmission(this.submission.Id).subscribe(() => {
+      this.navigateToSubmissions();
+    });
   }
 
   cancelSubmissions() {

@@ -1,3 +1,8 @@
 body {
-  margin-top: 50px;
+  margin-top: 55px;
+}
+
+.submission-title {
+  font-size: 25px;
+  margin-top: 3px;
 }
