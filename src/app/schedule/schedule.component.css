@@ -7,31 +7,29 @@
   cursor: pointer;
 }
 
-.submission-title {
-  font-size: 25px;
-  margin-top: 3px;
-}
-
 .time {
   width: 50px;
   display: flex;
   flex-direction: column;
-  font-weight: bold;
 }
 
 .start-time {
   margin: 0;
+  font-weight: bold;
+  font-size: medium;
+  text-align: center;
 }
 
 .end-time {
   margin-top: auto;
+  text-align: center;
 }
 
 .schedule {
-  width: 340px;
-  margin-left: 10px;
+  width: 350px;
   display: flex;
   flex-direction: column;
+  padding-left: 10px;
 }
 
 .container {

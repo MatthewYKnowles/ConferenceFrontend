@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SchedulePostedStatusComponent } from './schedule-posted-status.component';
+import {HttpModule} from '@angular/http';
 
 describe('SchedulePostedStatusComponent', () => {
   let component: SchedulePostedStatusComponent;
@@ -8,7 +9,8 @@ describe('SchedulePostedStatusComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SchedulePostedStatusComponent ]
+      declarations: [ SchedulePostedStatusComponent ],
+      imports: [HttpModule]
     })
     .compileComponents();
   }));

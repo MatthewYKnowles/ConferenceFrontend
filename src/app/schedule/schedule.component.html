@@ -3,12 +3,12 @@
   <div class="container">
     <div>
       <div *ngFor="let submission of submissions" class="submission-summary" [routerLink]="['/view-submission', submission.Id]"
-           [ngClass]="{'red-room': submission.Room === 'Red', 'purple-room': submission.Room === 'Purple', 'green-room': submission.Room === 'Green'}">
+           >
         <div class="time">
-          <div class="start-time">{{submission.StartTimeInHours}} : {{submission.StartTimeInMinutes | twoDigits}}</div>
-          <div class="end-time">{{submission.EndTimeInHours}} : {{submission.EndTimeInMinutes | twoDigits}}</div>
+          <div class="start-time">{{submission.StartTimeInHours}}:{{submission.StartTimeInMinutes | twoDigits}}</div>
+          <div class="end-time">{{submission.EndTimeInHours}}:{{submission.EndTimeInMinutes | twoDigits}}</div>
         </div>
-        <div class="schedule">
+        <div class="schedule" [ngClass]="{'red-room': submission.Room === 'Red', 'purple-room': submission.Room === 'Purple', 'green-room': submission.Room === 'Green'}">
           <h1 class="submission-title">{{ submission.SubmissionTitle }}</h1>
           <p class="submission-name">by: {{ submission.FirstName }} {{submission.LastName}}</p>
           <p class="submission-room">room: {{submission.Room}}</p>

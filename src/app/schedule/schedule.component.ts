@@ -9,17 +9,12 @@ import {Submission} from '../models/submission';
   providers: [SubmissionService]
 })
 export class ScheduleComponent implements OnInit {
-  private greenRoomSubmissions: any;
-  private redRoomSubmissions: any;
   private submissions: any;
-  private purpleRoomSubmissions: any;
 
   constructor(private _submissionService: SubmissionService) {
-    this._submissionService.getAllSubmissions().subscribe((submissions) => {
+    this._submissionService.getAllSubmissionsSorted().subscribe((submissions) => {
       this.submissions = submissions;
       this.submissions = this.submissions.filter((submission) => {return submission.Room; });
-      this.submissions.sort((a, b) => {return a.StartTimeInMinutes - b.StartTimeInMinutes; });
-      this.submissions.sort((a, b) => {return a.StartTimeInHours - b.StartTimeInHours; });
     });
   }
   ngOnInit() {

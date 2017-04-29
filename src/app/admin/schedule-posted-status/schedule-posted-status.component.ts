@@ -38,7 +38,7 @@ export class SchedulePostedStatusComponent implements OnInit {
   }
 
   unpostSchedule(): void {
-    this._submissionsService.unpostSchedule().subscribe(() => {
+    this._submissionsService.removeSchedule().subscribe(() => {
       this.getSchedulePostedStatus();
     });
   }

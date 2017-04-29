@@ -37,7 +37,7 @@ export class EditSubmissionComponent implements OnInit {
     { name: 'Purple' }
   ];
   private id: string;
-  private submission: Submission;
+  submission: Submission;
 
   constructor(private route: ActivatedRoute, private _submissionService: SubmissionService, private _router: Router) { }
 
@@ -55,8 +55,9 @@ export class EditSubmissionComponent implements OnInit {
       this._submissionService.putSubmission(this.submission).subscribe(() => {
           this.navigateToSubmissions();
       });
+    } else {
+      this.showErrorMessage = true;
     }
-    this.showErrorMessage = true;
   }
 
   unscheduleSubmission() {

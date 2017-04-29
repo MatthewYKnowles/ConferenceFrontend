@@ -15,11 +15,6 @@ export class SubmissionService {
     this._options = new RequestOptions({headers: this._headers});
   }
 
-  getAllSubmissions(): Observable<any> {
-    return this._http.get(this._submissionsUrl, this._options)
-      .map((response: Response) => response.json());
-  }
-
   getSubmission(id: string): Observable<any> {
     return this._http.get(this._submissionsUrl + '/'  + id, this._options)
       .map((response: Response) => response.json());
@@ -65,9 +60,13 @@ export class SubmissionService {
     return this._http.post(this._url + 'scheduleposted', JSON.stringify(schedulePostedStatus), this._options);
   }
 
-  unpostSchedule() {
-    const schedulePostedStatus: any = {};
-    schedulePostedStatus.Status = 'not posted';
-    return this._http.post(this._url + 'scheduleposted', JSON.stringify(schedulePostedStatus), this._options);
+  removeSchedule() {
+    const schedulePostedStatus: any = {Status: 'not posted'};
+    return this._http.post(this._url + 'schedulePosted', JSON.stringify(schedulePostedStatus), this._options);
+  }
+
+  getAllSubmissionsSorted() {
+    return this._http.get(this._submissionsUrl + '?sorted=true', this._options)
+      .map((response: Response) => response.json());
   }
 }
