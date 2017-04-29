@@ -50,14 +50,13 @@ export class SubmissionService {
   }
 
   getSchedulePostedStatus() {
-    return this._http.get(this._url + 'scheduleposted', this._options)
+    return this._http.get(this._url + 'schedulePosted', this._options)
       .map((response: Response) => response.json());
   }
 
   postSchedule() {
-    const schedulePostedStatus: any = {};
-    schedulePostedStatus.Status = 'posted';
-    return this._http.post(this._url + 'scheduleposted', JSON.stringify(schedulePostedStatus), this._options);
+    const schedulePostedStatus: any = {Status: 'posted'};
+    return this._http.post(this._url + 'schedulePosted', JSON.stringify(schedulePostedStatus), this._options);
   }
 
   removeSchedule() {

@@ -26,7 +26,7 @@ describe('SubmissionService', () => {
     service.getAllSubmissionsSorted();
   }));
 
-  it('should get submissions with a query string for sorted',
+  it('should post a status of schedule not posted',
     inject([XHRBackend, SubmissionService], (mockBackend: MockBackend, service: SubmissionService) => {
     mockBackend.connections.subscribe((connection: MockConnection) => {
       expect(connection.request.url).toBe('http://localhost:59335/api/schedulePosted');
@@ -34,4 +34,13 @@ describe('SubmissionService', () => {
     });
     service.removeSchedule();
   }));
+
+  it('should post a status of schedule posted',
+    inject([XHRBackend, SubmissionService], (mockBackend: MockBackend, service: SubmissionService) => {
+      mockBackend.connections.subscribe((connection: MockConnection) => {
+        expect(connection.request.url).toBe('http://localhost:59335/api/schedulePosted');
+        expect(connection.request.text()).toBe('{"Status":"posted"}');
+      });
+      service.postSchedule();
+    }));
 });
