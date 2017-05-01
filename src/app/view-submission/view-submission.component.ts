@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import {SubmissionService} from '../services/submission.service';
 import {Submission} from '../models/submission';
 
@@ -11,16 +11,18 @@ import {Submission} from '../models/submission';
 })
 export class ViewSubmissionComponent implements OnInit {
   submission: Submission;
-  id: string;
 
-  constructor(private route: ActivatedRoute, private _submissionService: SubmissionService, private _router: Router) { }
+  constructor(private _route: ActivatedRoute, private _submissionService: SubmissionService) { }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      this.id = params['id'];
-    });
-    this._submissionService.getSubmission(this.id).subscribe((submission) => {
-      this.submission = submission;
+    this.setSubmission();
+  }
+
+  private setSubmission() {
+    this._route.params.subscribe(params => {
+      this._submissionService.getSubmission(params['submissionId']).subscribe((submission) => {
+        this.submission = submission;
+      });
     });
   }
 

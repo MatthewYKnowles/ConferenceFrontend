@@ -27,7 +27,7 @@ export const routing = RouterModule.forRoot([
         component: ScheduleComponent
       },
       {
-        path: 'view-submission/:id',
+        path: 'view-submission/:submissionId',
         component: ViewSubmissionComponent
       }
     ] },
@@ -40,7 +40,7 @@ export const routing = RouterModule.forRoot([
         component: SubmissionComponent
       },
       {
-        path: 'edit-submission/:id',
+        path: 'edit-submission/:submissionId',
         component: EditSubmissionComponent
       },
       {

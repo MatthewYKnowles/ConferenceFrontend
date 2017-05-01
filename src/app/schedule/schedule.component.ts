@@ -12,12 +12,19 @@ export class ScheduleComponent implements OnInit {
   private submissions: any;
 
   constructor(private _submissionService: SubmissionService) {
+  }
+
+  ngOnInit() {
+    this.getAllSubmissionsWithARoom();
+  }
+
+  getAllSubmissionsWithARoom() {
     this._submissionService.getAllSubmissionsSorted().subscribe((submissions) => {
       this.submissions = submissions;
-      this.submissions = this.submissions.filter((submission) => {return submission.Room; });
+      this.submissions = this.submissions.filter((submission) => {
+        return submission.Room;
+      });
     });
-  }
-  ngOnInit() {
   }
 
 }

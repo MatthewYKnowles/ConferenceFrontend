@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { SubmissionsStatusComponent } from './submissions-status.component';
-import {HttpModule} from '@angular/http';
+import {HttpModule, XHRBackend} from '@angular/http';
+import {MockBackend} from "@angular/http/testing";
 
 describe('SubmissionsStatusComponent', () => {
   let component: SubmissionsStatusComponent;
@@ -9,7 +10,8 @@ describe('SubmissionsStatusComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ SubmissionsStatusComponent ],
-      imports: [HttpModule]
+      imports: [HttpModule],
+      providers: [{ provide: XHRBackend, useClass: MockBackend }]
     })
     .compileComponents();
   }));

@@ -43,10 +43,10 @@ export class EditSubmissionComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.id = params['id'];
-    });
-    this._submissionService.getSubmission(this.id).subscribe((submission) => {
-      this.submission = submission;
+      this._submissionService.getSubmission(params['submissionId']).subscribe((submission) => {
+        this.submission = submission;
+      });
+      console.log(this.id);
     });
   }
 

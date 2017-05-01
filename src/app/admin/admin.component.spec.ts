@@ -3,7 +3,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { AdminComponent } from './admin.component';
 import {AdminNavigationComponent} from './admin-navigation/admin-navigation.component';
 import {RouterTestingModule} from '@angular/router/testing';
-import {HttpModule} from '@angular/http';
+import {HttpModule, XHRBackend} from '@angular/http';
+import {MockBackend} from "@angular/http/testing";
 
 describe('AdminComponent', () => {
   let component: AdminComponent;
@@ -12,7 +13,8 @@ describe('AdminComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ AdminComponent, AdminNavigationComponent ],
-      imports: [RouterTestingModule, HttpModule ]
+      imports: [RouterTestingModule, HttpModule ],
+      providers: [{ provide: XHRBackend, useClass: MockBackend }]
     })
     .compileComponents();
   }));

@@ -3,7 +3,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { StandardComponent } from './standard.component';
 import {NavigationComponent} from '../navigation/navigation.component';
 import {RouterTestingModule} from '@angular/router/testing';
-import {HttpModule} from '@angular/http';
+import {HttpModule, XHRBackend} from '@angular/http';
+import {MockBackend} from "@angular/http/testing";
 
 describe('StandardComponent', () => {
   let component: StandardComponent;
@@ -12,7 +13,8 @@ describe('StandardComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ StandardComponent, NavigationComponent ],
-      imports: [RouterTestingModule, HttpModule]
+      imports: [RouterTestingModule, HttpModule],
+      providers: [{ provide: XHRBackend, useClass: MockBackend }]
     })
     .compileComponents();
   }));

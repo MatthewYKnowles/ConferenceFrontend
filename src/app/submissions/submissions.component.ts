@@ -13,6 +13,10 @@ export class SubmissionsComponent implements OnInit {
   constructor(private _submissionService: SubmissionService) {}
 
   ngOnInit() {
+    this.setSubmissions();
+  }
+
+  private setSubmissions() {
     this._submissionService.getAllSubmissionsSorted().subscribe((submissions) => {
       this.submissions = submissions;
     });

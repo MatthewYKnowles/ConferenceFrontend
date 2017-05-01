@@ -1,10 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { EditSubmissionComponent } from './edit-submission.component';
 import {FormsModule} from '@angular/forms';
-import {HttpModule} from '@angular/http';
-import {Observable} from 'rxjs/Observable';
+import {HttpModule, XHRBackend} from '@angular/http';
 import {RouterTestingModule} from '@angular/router/testing';
-import {Submission} from '../../models/submission';
+import {ActivatedRoute} from "@angular/router";
+import {Observable} from "rxjs/Observable";
+import {MockBackend} from "@angular/http/testing";
+import {Submission} from "../../models/submission";
 
 describe('EditSubmissionComponent', () => {
   let component: EditSubmissionComponent;
@@ -13,14 +15,20 @@ describe('EditSubmissionComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ EditSubmissionComponent ],
-      imports: [FormsModule, HttpModule, RouterTestingModule ]
+      imports: [FormsModule, HttpModule, RouterTestingModule ],
+      providers: [
+        {
+          provide: ActivatedRoute, useValue: {
+          params: Observable.of({submissionId: '1'})
+        }
+        },
+        { provide: XHRBackend, useClass: MockBackend }
+      ]
     })
     .compileComponents();
   }));
 
-  let params: Observable<string>;
   beforeEach(() => {
-    params = Observable.of({});
     fixture = TestBed.createComponent(EditSubmissionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

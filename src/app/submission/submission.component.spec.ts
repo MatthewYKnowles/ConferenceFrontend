@@ -1,9 +1,12 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, inject, TestBed} from '@angular/core/testing';
 
 import { SubmissionComponent } from './submission.component';
 import {FormsModule} from '@angular/forms';
-import {HttpModule} from '@angular/http';
+import {HttpModule, XHRBackend} from '@angular/http';
 import {RouterTestingModule} from '@angular/router/testing';
+import {SubmissionService} from "../services/submission.service";
+import {Observable} from "rxjs/Observable";
+import {MockBackend} from "@angular/http/testing";
 
 describe('SubmissionComponent', () => {
   let component: SubmissionComponent;
@@ -12,7 +15,8 @@ describe('SubmissionComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ SubmissionComponent ],
-      imports: [FormsModule, HttpModule, RouterTestingModule]
+      imports: [FormsModule, HttpModule, RouterTestingModule],
+      providers: [{ provide: XHRBackend, useClass: MockBackend }]
     })
     .compileComponents();
   }));

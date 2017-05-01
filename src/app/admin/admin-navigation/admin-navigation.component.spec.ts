@@ -1,10 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AdminNavigationComponent } from './admin-navigation.component';
-import {SubmissionService} from '../../services/submission.service';
-import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
-import {HttpModule} from '@angular/http';
+import {HttpModule, XHRBackend} from '@angular/http';
+import {MockBackend} from '@angular/http/testing';
 
 describe('AdminNavigationComponent', () => {
   let component: AdminNavigationComponent;
@@ -12,9 +11,11 @@ describe('AdminNavigationComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      providers: [SubmissionService],
       declarations: [ AdminNavigationComponent ],
-      imports: [HttpModule]
+      imports: [HttpModule],
+      providers: [
+        { provide: XHRBackend, useClass: MockBackend }
+      ]
     })
     .compileComponents();
   }));

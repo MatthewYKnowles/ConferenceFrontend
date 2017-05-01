@@ -1,7 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HomeComponent } from './home.component';
-import {HttpModule} from '@angular/http';
+import {HttpModule, XHRBackend} from '@angular/http';
+import {MockBackend} from "@angular/http/testing";
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -10,7 +11,8 @@ describe('HomeComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ HomeComponent ],
-      imports: [HttpModule]
+      imports: [HttpModule],
+      providers: [{ provide: XHRBackend, useClass: MockBackend }]
     })
     .compileComponents();
   }));

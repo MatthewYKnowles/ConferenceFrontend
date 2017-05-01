@@ -1,7 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NavigationComponent } from './navigation.component';
-import {HttpModule} from '@angular/http';
+import {HttpModule, XHRBackend} from '@angular/http';
+import {MockBackend} from "@angular/http/testing";
 
 describe('NavigationComponent', () => {
   let component: NavigationComponent;
@@ -10,7 +11,8 @@ describe('NavigationComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ NavigationComponent ],
-      imports: [HttpModule]
+      imports: [HttpModule],
+      providers: [{ provide: XHRBackend, useClass: MockBackend }]
     })
     .compileComponents();
   }));

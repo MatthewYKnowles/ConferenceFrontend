@@ -1,8 +1,11 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { ViewSubmissionComponent } from './view-submission.component';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {ViewSubmissionComponent} from './view-submission.component';
 import {TwoDigitsPipe} from '../two-digits.pipe';
-import {HttpModule} from '@angular/http';
+import {BaseRequestOptions, Http, HttpModule, XHRBackend} from '@angular/http';
 import {RouterTestingModule} from '@angular/router/testing';
+import {MockBackend} from '@angular/http/testing';
+import {ActivatedRoute} from '@angular/router';
+import {Observable} from 'rxjs/Observable';
 
 describe('ViewSubmissionComponent', () => {
   let component: ViewSubmissionComponent;
@@ -10,10 +13,18 @@ describe('ViewSubmissionComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ViewSubmissionComponent, TwoDigitsPipe ],
-      imports: [HttpModule, RouterTestingModule]
+      declarations: [ViewSubmissionComponent, TwoDigitsPipe],
+      imports: [HttpModule, RouterTestingModule],
+      providers: [
+        {
+          provide: ActivatedRoute, useValue: {
+          params: Observable.of({submissionId: '1'})
+          }
+        },
+        { provide: XHRBackend, useClass: MockBackend }
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
