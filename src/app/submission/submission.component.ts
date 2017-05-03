@@ -13,7 +13,7 @@ import {Submission} from '../models/submission';
 export class SubmissionComponent implements OnInit{
   submission: Submission;
   requiredFieldsEmpty = false;
-  private submissionsStatus: string;
+  submissionsStatus: string;
 
   constructor(private _submissionsService: SubmissionService, private _router: Router) {
     this.submission = new Submission();
@@ -23,13 +23,21 @@ export class SubmissionComponent implements OnInit{
     this.getSubmissionStatus();
   }
 
-  SubmitSubmission(): void {
-    if (this.allRequiredFieldsAreNotFilledIn()) {
-      this.requiredFieldsEmpty = true;
-    } else {
-      this._submissionsService.postSubmission(this.submission).subscribe();
-      this._router.navigate(['']);
-    }
+  submitSubmission(): void {
+    this.allRequiredFieldsAreNotFilledIn()
+      ? this.showRequiredFieldsErrorMessage()
+      : this.postSubmissionAndNavigateHome();
+  }
+
+  private showRequiredFieldsErrorMessage() {
+    this.requiredFieldsEmpty = true;
+  }
+
+  private postSubmissionAndNavigateHome() {
+    this._submissionsService.postSubmission(this.submission).subscribe(() => {
+        this._router.navigate(['']);
+      }
+    );
   }
 
   private allRequiredFieldsAreNotFilledIn(): boolean {

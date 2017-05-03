@@ -41,7 +41,7 @@
              [ngClass]="{'submission-error': subAbstract.invalid, 'submission-success': subAbstract.valid}"
                 [(ngModel)]="submission.SubmissionAbstract" required></textarea>
     </div>
-    <button (click)="SubmitSubmission()" class="btn btn-primary">Submit</button>
+    <button (click)="submitSubmission()" class="btn btn-primary">Submit</button>
   </form>
   <div *ngIf="requiredFieldsEmpty" class="submissions-closed text-center">Please fill in all required fields</div>
 </div>

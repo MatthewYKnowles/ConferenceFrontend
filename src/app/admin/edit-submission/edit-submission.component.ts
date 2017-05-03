@@ -46,7 +46,6 @@ export class EditSubmissionComponent implements OnInit {
       this._submissionService.getSubmission(params['submissionId']).subscribe((submission) => {
         this.submission = submission;
       });
-      console.log(this.id);
     });
   }
 

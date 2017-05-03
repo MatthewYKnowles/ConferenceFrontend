@@ -4,7 +4,7 @@ import { AdminComponent } from './admin.component';
 import {AdminNavigationComponent} from './admin-navigation/admin-navigation.component';
 import {RouterTestingModule} from '@angular/router/testing';
 import {HttpModule, XHRBackend} from '@angular/http';
-import {MockBackend} from "@angular/http/testing";
+import {MockBackend} from '@angular/http/testing';
 
 describe('AdminComponent', () => {
   let component: AdminComponent;
