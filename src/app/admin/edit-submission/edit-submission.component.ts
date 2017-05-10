@@ -11,6 +11,8 @@ import {Submission} from '../../models/submission';
 })
 export class EditSubmissionComponent implements OnInit {
   showErrorMessage: boolean;
+  submission: Submission;
+
   minuteOptions: any = [
     { value: 0, display: '00' },
     { value: 15, display: '15' },
@@ -36,8 +38,6 @@ export class EditSubmissionComponent implements OnInit {
     { name: 'Red' },
     { name: 'Purple' }
   ];
-  private id: string;
-  submission: Submission;
 
   constructor(private route: ActivatedRoute, private _submissionService: SubmissionService, private _router: Router) { }
 
@@ -50,21 +50,23 @@ export class EditSubmissionComponent implements OnInit {
   }
 
   updateSubmission() {
-    if (this.allFieldsFilledIn()) {
-      this._submissionService.putSubmission(this.submission).subscribe(() => {
-          this.navigateToSubmissions();
-      });
-    } else {
-      this.showErrorMessage = true;
-    }
+    this.allRequiredFieldsFilledIn()
+      ? this.putSubmissionAndNavigateToSubmissions()
+      : this.diplayErrorMessage();
   }
 
-  unscheduleSubmission() {
-    this.submission.StartTimeInHours = 0;
-    this.submission.StartTimeInMinutes = 0;
-    this.submission.EndTimeInHours = 0;
-    this.submission.EndTimeInMinutes = 0;
-    this.submission.Room = null;
+  private diplayErrorMessage() {
+    this.showErrorMessage = true;
+  }
+
+  putSubmissionAndNavigateToSubmissions() {
+    this._submissionService.putSubmission(this.submission).subscribe(() => {
+      this.navigateToSubmissions();
+    });
+  }
+
+  unScheduleSubmission() {
+    this.submission.unschedule();
     this._submissionService.putSubmission(this.submission).subscribe(() => {
       this.navigateToSubmissions();
     });
@@ -80,8 +82,8 @@ export class EditSubmissionComponent implements OnInit {
     this.navigateToSubmissions();
   }
 
-  allFieldsFilledIn() {
-    return this.submission.EndTimeInHours && this.submission.StartTimeInHours && this.submission.Room;
+  allRequiredFieldsFilledIn(): boolean {
+    return Boolean(this.submission.EndTimeInHours && this.submission.StartTimeInHours && this.submission.Room);
   }
 
   navigateToSubmissions() {

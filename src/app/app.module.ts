@@ -16,7 +16,7 @@ import { SubmissionsComponent } from './submissions/submissions.component';
 import { SubmissionsStatusComponent } from './admin/submissions-status/submissions-status.component';
 import { EditSubmissionComponent } from './admin/edit-submission/edit-submission.component';
 import { ScheduleComponent } from './schedule/schedule.component';
-import { TwoDigitsPipe } from './two-digits.pipe';
+import { TwoDigitsPipe } from './pipes/two-digits.pipe';
 import { ViewSubmissionComponent } from './view-submission/view-submission.component';
 import { SchedulePostedStatusComponent } from './admin/schedule-posted-status/schedule-posted-status.component';
 

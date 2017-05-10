@@ -1,6 +1,6 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {ViewSubmissionComponent} from './view-submission.component';
-import {TwoDigitsPipe} from '../two-digits.pipe';
+import {TwoDigitsPipe} from '../pipes/two-digits.pipe';
 import {BaseRequestOptions, Http, HttpModule, XHRBackend} from '@angular/http';
 import {RouterTestingModule} from '@angular/router/testing';
 import {MockBackend} from '@angular/http/testing';

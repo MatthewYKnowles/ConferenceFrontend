@@ -10,7 +10,7 @@ import {Submission} from '../models/submission';
   providers: [SubmissionService]
 })
 
-export class SubmissionComponent implements OnInit{
+export class SubmissionComponent implements OnInit {
   submission: Submission;
   requiredFieldsEmpty = false;
   submissionsStatus: string;
@@ -24,9 +24,9 @@ export class SubmissionComponent implements OnInit{
   }
 
   submitSubmission(): void {
-    this.allRequiredFieldsAreNotFilledIn()
-      ? this.showRequiredFieldsErrorMessage()
-      : this.postSubmissionAndNavigateHome();
+    this.allRequiredFieldsFilledIn()
+      ? this.postSubmissionAndNavigateHome()
+      : this.showRequiredFieldsErrorMessage();
   }
 
   private showRequiredFieldsErrorMessage() {
@@ -40,9 +40,9 @@ export class SubmissionComponent implements OnInit{
     );
   }
 
-  private allRequiredFieldsAreNotFilledIn(): boolean {
-    return !this.submission.FirstName || !this.submission.LastName || !this.submission.SubmissionTitle
-      || !this.submission.SubmissionAbstract || !this.submission.Email;
+  private allRequiredFieldsFilledIn(): boolean {
+    return Boolean(this.submission.FirstName && this.submission.LastName && this.submission.SubmissionTitle
+      && this.submission.SubmissionAbstract && this.submission.Email);
   }
 
   getSubmissionStatus(): void {
@@ -54,6 +54,7 @@ export class SubmissionComponent implements OnInit{
   submissionsStatusIsOpen(): boolean {
     return this.submissionsStatus === 'open';
   }
+
   submissionsStatusIsClosed(): boolean {
     return this.submissionsStatus === 'closed';
   }
